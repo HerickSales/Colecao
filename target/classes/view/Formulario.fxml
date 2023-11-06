@@ -6,29 +6,33 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controller.FormularioController">
+<AnchorPane id="AnchorPane" fx:id="paneCadastro" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
    <children>
-      <ToolBar layoutY="7.0" prefHeight="40.0" prefWidth="608.0" style="-fx-background-position: center;">
+      <ToolBar fx:id="toolbarCadastro" disable="true" prefHeight="40.0" prefWidth="608.0">
          <items>
-            <Label alignment="CENTER_RIGHT" style="-fx-alignment: Center;" text="Cadastro" />
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="586.0" text="Cadastro">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </items>
       </ToolBar>
-      <Label layoutX="24.0" layoutY="69.0" text="Nome" />
-      <Label layoutX="24.0" layoutY="94.0" text="Placa" />
-      <Label layoutX="24.0" layoutY="114.0" text="Status" />
-      <Label layoutX="24.0" layoutY="166.0" text="Ano" />
-      <Label layoutX="24.0" layoutY="138.0" prefHeight="18.0" prefWidth="28.0" text="Km" />
-      <Label layoutX="24.0" layoutY="200.0" text="Obs" />
-      <TextField fx:id="txtNome" layoutX="66.0" layoutY="65.0" />
-      <TextField fx:id="txtPlaca" layoutX="66.0" layoutY="90.0" />
-      <TextField fx:id="txtStatus" layoutX="66.0" layoutY="110.0" />
-      <TextField fx:id="txtKm" layoutX="75.0" layoutY="134.0" />
-      <TextField fx:id="txtAno" layoutX="66.0" layoutY="162.0" />
-      <TextField fx:id="txtObs" layoutX="75.0" layoutY="196.0" />
+      <Label layoutX="35.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Nome" />
+      <Label layoutX="35.0" layoutY="100.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Placa" />
+      <Label layoutX="35.0" layoutY="140.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Status" />
+      <Label layoutX="35.0" layoutY="260.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Ano" />
+      <Label layoutX="35.0" layoutY="180.0" mouseTransparent="true" prefHeight="18.0" prefWidth="28.0" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Km" />
+      <Label layoutX="35.0" layoutY="220.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Obs" />
+      <TextField fx:id="txtNome" layoutX="100.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
+      <TextField fx:id="txtPlaca" layoutX="100.0" layoutY="100.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
+      <TextField fx:id="txtStatus" layoutX="100.0" layoutY="140.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
+      <TextField fx:id="txtKm" layoutX="100.0" layoutY="180.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
+      <TextField fx:id="txtAno" layoutX="100.0" layoutY="220.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
+      <TextField fx:id="txtObs" layoutX="100.0" layoutY="260.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
       <ImageView fx:id="imgCarro" fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnFoto" layoutX="482.0" layoutY="234.0" mnemonicParsing="false" text="Escolher Foto" />
-      <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" text="Salvar" />
+      <Button fx:id="btnFoto" layoutX="482.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
+      <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" text="Salvar" />
    </children>
 </AnchorPane>

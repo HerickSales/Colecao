@@ -74,5 +74,13 @@ public class PrincipalController implements Initializable {
     private void btnEditarOnAction(ActionEvent event) throws IOException {
         App.setRoot("Formulario");
     }
+
+    @FXML
+    private void btnLimparOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnExcluirOnAction(ActionEvent event) {
+    }
     
 }
