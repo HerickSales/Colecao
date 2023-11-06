@@ -14,6 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import model.Carro;
+import model.dao.CarroDaoJdbc;
+import model.dao.DaoFactory;
+import start.projetopadrao.App;
 
 /**
  * FXML Controller class
@@ -41,16 +45,32 @@ public class FormularioController implements Initializable {
     @FXML
     private Button btnSalvar;
     @FXML
+    private Button btnCancelar;
+    @FXML
     private AnchorPane paneCadastro;
     @FXML
     private ToolBar toolbarCadastro;
+    
+    private static Carro carroSelecionado;
 
-    /**
-     * Initializes the controller class.
-     */
+    public static Carro getCarroSelecionado() {
+        return carroSelecionado;
+    }
+
+    public static void setCarroSelecionado(Carro carroSelecionado) {
+        FormularioController.carroSelecionado = carroSelecionado;
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        if(carroSelecionado != null) {
+            txtNome.setText(carroSelecionado.getNome());
+            txtPlaca.setText(carroSelecionado.getPlaca());
+            txtKm.setText(String.valueOf(carroSelecionado.getKilometragem()));
+            txtAno.setText(carroSelecionado.getAno());
+            txtObs.setText(carroSelecionado.getObservacao());
+        }
     }    
 
     @FXML
@@ -58,7 +78,29 @@ public class FormularioController implements Initializable {
     }
 
     @FXML
-    private void btnSalvarOnAction(ActionEvent event) {
+    private void btnSalvarOnAction(ActionEvent event) throws Exception {
+        Carro carro = new Carro();
+        carro.setNome(txtNome.getText());
+        carro.setPlaca(txtPlaca.getText());
+        carro.setKilometragem(Integer.getInteger(txtPlaca.getText()));
+        carro.setAno(txtAno.getText());
+        carro.setObservacao(txtObs.getText());
+
+        CarroDaoJdbc dao = DaoFactory.novoCarroDao();
+        if (carroSelecionado == null) {
+            dao.incluir(carro);
+        } else {
+            carro.setId(carroSelecionado.getId());
+            dao.editar(carro);
+            carroSelecionado = null;
+        }
+
+        App.setRoot("Principal");
+    }
+
+    @FXML
+    private void btnCancelarOnAction(ActionEvent event) throws Exception {
+        App.setRoot("Principal");
     }
     
 }

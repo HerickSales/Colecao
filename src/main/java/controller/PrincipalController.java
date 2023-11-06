@@ -66,7 +66,7 @@ public class PrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        carregarCarros("");
+        //carregarCarros("");
     }    
 
     @FXML
@@ -88,18 +88,18 @@ public class PrincipalController implements Initializable {
     }
     
     private void carregarCarros(String param) {
-        tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
+        //tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        //tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        //tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
         
-        try {
-            CarroDaoJdbc dao = DaoFactory.novoCarroDao();
-            listaCarros = dao.listar(param);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        observableListCarros = FXCollections.observableArrayList(listaCarros);
-        tblCarros.setItems(observableListCarros);
+        //try {
+            //CarroDaoJdbc dao = DaoFactory.novoCarroDao();
+            //listaCarros = dao.listar(param);
+        //} catch (Exception ex) {
+            //System.out.println(ex.getMessage());
+        //}
+        //observableListCarros = FXCollections.observableArrayList(listaCarros);
+       // tblCarros.setItems(observableListCarros);
     }
     
 }

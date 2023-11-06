@@ -32,7 +32,8 @@
       <TextField fx:id="txtAno" layoutX="100.0" layoutY="220.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
       <TextField fx:id="txtObs" layoutX="100.0" layoutY="260.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" />
       <ImageView fx:id="imgCarro" fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnFoto" layoutX="482.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
+      <Button fx:id="btnFoto" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
       <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" text="Salvar" />
+      <Button fx:id="btnCancelar" layoutX="76.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnCancelarOnAction" text="Cancelar" />
    </children>
 </AnchorPane>
