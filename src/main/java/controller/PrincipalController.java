@@ -1,27 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import model.Carro;
+import model.dao.CarroDaoJdbc;
+import model.dao.DaoFactory;
 import start.projetopadrao.App;
 
-/**
- * FXML Controller class
- *
- * @author lefoly
- */
 public class PrincipalController implements Initializable {
 
     @FXML
@@ -31,11 +30,13 @@ public class PrincipalController implements Initializable {
     @FXML
     private Button btnIncluir;
     @FXML
-    private TableColumn<?, ?> tblNome;
+    private TableView<Carro> tblCarros;
     @FXML
-    private TableColumn<?, ?> tblStatus;
+    private TableColumn<Carro, String> tblNome;
     @FXML
-    private TableColumn<?, ?> tblPlaca;
+    private TableColumn<Carro, String> tblStatus;
+    @FXML
+    private TableColumn<Carro, String> tblPlaca;
     @FXML
     private ImageView imgCarro;
     @FXML
@@ -56,13 +57,16 @@ public class PrincipalController implements Initializable {
     private Label lblManutencao;
     @FXML
     private Label lblTotal;
+    
+    private List<Carro> listaCarros;
+    private ObservableList<Carro> observableListCarros;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        carregarCarros("");
     }    
 
     @FXML
@@ -81,6 +85,21 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private void btnExcluirOnAction(ActionEvent event) {
+    }
+    
+    private void carregarCarros(String param) {
+        tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
+        
+        try {
+            CarroDaoJdbc dao = DaoFactory.novoCarroDao();
+            listaCarros = dao.listar(param);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        observableListCarros = FXCollections.observableArrayList(listaCarros);
+        tblCarros.setItems(observableListCarros);
     }
     
 }
