@@ -10,7 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -31,8 +33,6 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtPlaca;
     @FXML
-    private TextField txtStatus;
-    @FXML
     private TextField txtKm;
     @FXML
     private TextField txtAno;
@@ -50,6 +50,14 @@ public class FormularioController implements Initializable {
     private AnchorPane paneCadastro;
     @FXML
     private ToolBar toolbarCadastro;
+    @FXML
+    private RadioButton radDisponivel;
+    @FXML
+    private RadioButton radAlugado;
+    @FXML
+    private RadioButton radManutencao;
+    @FXML
+    private ToggleGroup statusGroup;
     
     private static Carro carroSelecionado;
 
@@ -64,6 +72,10 @@ public class FormularioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        radDisponivel.setToggleGroup(statusGroup);
+        radAlugado.setToggleGroup(statusGroup);
+        radManutencao.setToggleGroup(statusGroup);
+        
         if(carroSelecionado != null) {
             txtNome.setText(carroSelecionado.getNome());
             txtPlaca.setText(carroSelecionado.getPlaca());
@@ -85,6 +97,18 @@ public class FormularioController implements Initializable {
         carro.setKilometragem(Integer.getInteger(txtPlaca.getText()));
         carro.setAno(txtAno.getText());
         carro.setObservacao(txtObs.getText());
+        
+        statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == radDisponivel) {
+                carro.setStatus(0);
+            } else if(newValue == radAlugado) {
+                carro.setStatus(1);
+            } else if(newValue == radManutencao) {
+                carro.setStatus(2);
+            } else {
+                carro.setStatus(0);
+            }
+        }); 
 
         CarroDaoJdbc dao = DaoFactory.novoCarroDao();
         if (carroSelecionado == null) {
