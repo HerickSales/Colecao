@@ -21,12 +21,12 @@
             </Label>
          </items>
       </ToolBar>
-      <Label layoutX="35.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Nome" />
-      <Label layoutX="35.0" layoutY="100.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Placa" />
-      <Label layoutX="35.0" layoutY="140.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Status" />
-      <Label layoutX="35.0" layoutY="260.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Ano" />
-      <Label layoutX="35.0" layoutY="180.0" mouseTransparent="true" prefHeight="18.0" prefWidth="28.0" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Km" />
-      <Label layoutX="35.0" layoutY="220.0" mouseTransparent="true" style="-fx-alignment: left; -fx-padding: 5; -fx-content-display: Left;" text="Obs" />
+      <Label layoutX="35.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" text="Nome" />
+      <Label layoutX="35.0" layoutY="100.0" mouseTransparent="true" text="Placa" />
+      <Label layoutX="35.0" layoutY="140.0" mouseTransparent="true" text="Status" />
+      <Label layoutX="35.0" layoutY="260.0" mouseTransparent="true" text="Ano" />
+      <Label layoutX="35.0" layoutY="180.0" mouseTransparent="true" prefHeight="18.0" prefWidth="28.0" text="Km" />
+      <Label layoutX="35.0" layoutY="220.0" mouseTransparent="true" text="Obs" />
       <ImageView fx:id="imgCarro" fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btnFoto" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
       <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" text="Salvar" />

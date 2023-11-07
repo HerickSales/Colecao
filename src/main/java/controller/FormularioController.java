@@ -4,18 +4,24 @@
  */
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import model.Carro;
 import model.dao.CarroDaoJdbc;
 import model.dao.DaoFactory;
@@ -27,7 +33,8 @@ import start.projetopadrao.App;
  * @author heric
  */
 public class FormularioController implements Initializable {
-
+    
+    private String pathImage;
     @FXML
     private TextField txtNome;
     @FXML
@@ -87,6 +94,22 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void btnEscolherFotoOnAction(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecione uma imagem");
+        fileChooser.setInitialDirectory(new File("C:\\"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG (.jpeg)", ".jpg"),
+                new FileChooser.ExtensionFilter("PNG (.png)", "*png"), new FileChooser.ExtensionFilter("All images", "*jpg",".png"));
+        File selectedFile = fileChooser.showOpenDialog(btnFoto.getScene().getWindow());
+        if(selectedFile != null){
+            pathImage=selectedFile.getAbsolutePath();
+            System.out.println(pathImage);
+            Image image = new Image(selectedFile.toURI().toString());
+            imgCarro.setImage(image);
+            
+        }else{
+            System.out.println("Nenhum arquivo foi selecionado");
+        }
+        
     }
 
     @FXML
@@ -97,7 +120,14 @@ public class FormularioController implements Initializable {
         carro.setKilometragem(Integer.parseInt(txtKm.getText()));
         carro.setAno(txtAno.getText());
         carro.setObservacao(txtObs.getText());
-        carro.setFoto("foto teste");
+        if(pathImage==null){
+            Alert alert= new Alert(AlertType.WARNING);
+            alert.setTitle("ATENÇÃO");
+            alert.setContentText("IMAGEM NAO FOI ESCOLHIDA");
+            alert.showAndWait();
+            return;
+        }
+        carro.setFoto(pathImage);
         
         System.out.print(carro);
         
