@@ -94,9 +94,12 @@ public class FormularioController implements Initializable {
         Carro carro = new Carro();
         carro.setNome(txtNome.getText());
         carro.setPlaca(txtPlaca.getText());
-        carro.setKilometragem(Integer.getInteger(txtPlaca.getText()));
+        carro.setKilometragem(Integer.parseInt(txtKm.getText()));
         carro.setAno(txtAno.getText());
         carro.setObservacao(txtObs.getText());
+        carro.setFoto("foto teste");
+        
+        System.out.print(carro);
         
         statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == radDisponivel) {

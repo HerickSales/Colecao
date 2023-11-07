@@ -9,6 +9,10 @@ import model.Carro;
 
 public class CarroDaoJdbc implements InterfaceDao<Carro> {
     private Connection conn;
+    
+    public CarroDaoJdbc() throws Exception {
+        conn = ConnFactory.getConnection();
+    }
 
     @Override
     public void incluir(Carro entidade) throws Exception {

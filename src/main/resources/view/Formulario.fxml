@@ -41,6 +41,6 @@
       <TextField fx:id="txtPlaca" layoutX="100.0" layoutY="100.0" />
       <TextField fx:id="txtKm" layoutX="100.0" layoutY="180.0" />
       <TextField fx:id="txtObs" layoutX="100.0" layoutY="220.0" />
-      <TextField layoutX="100.0" layoutY="260.0" />
+      <TextField fx:id="txtAno" layoutX="100.0" layoutY="260.0" />
    </children>
 </AnchorPane>
