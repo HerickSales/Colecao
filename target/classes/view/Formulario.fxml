@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="paneCadastro" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
+   <children>
+      <ToolBar fx:id="toolbarCadastro" prefHeight="40.0" prefWidth="608.0">
+         <items>
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="586.0" text="Cadastro">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </items>
+      </ToolBar>
+      <Label layoutX="35.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" text="Nome" />
+      <Label layoutX="35.0" layoutY="100.0" mouseTransparent="true" text="Placa" />
+      <Label layoutX="35.0" layoutY="140.0" mouseTransparent="true" text="Status" />
+      <Label layoutX="35.0" layoutY="260.0" mouseTransparent="true" text="Ano" />
+      <Label layoutX="35.0" layoutY="180.0" mouseTransparent="true" prefHeight="18.0" prefWidth="28.0" text="Km" />
+      <Label layoutX="35.0" layoutY="220.0" mouseTransparent="true" text="Obs" />
+      <ImageView fx:id="imgCarro" fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnFoto" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
+      <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" text="Salvar" />
+      <Button fx:id="btnCancelar" layoutX="76.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnCancelarOnAction" text="Cancelar" />
+      <RadioButton fx:id="radDisponivel" layoutX="89.0" layoutY="145.0" mnemonicParsing="false" selected="true" text="Disponivel">
+         <toggleGroup>
+            <ToggleGroup fx:id="statusGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="radAlugado" layoutX="179.0" layoutY="145.0" mnemonicParsing="false" text="Alugado" toggleGroup="$statusGroup" />
+      <RadioButton fx:id="radManutencao" layoutX="260.0" layoutY="145.0" mnemonicParsing="false" text="Manutenção" toggleGroup="$statusGroup" />
+      <TextField fx:id="txtNome" layoutX="100.0" layoutY="60.0" />
+      <TextField fx:id="txtPlaca" layoutX="100.0" layoutY="100.0" />
+      <TextField fx:id="txtKm" layoutX="100.0" layoutY="180.0" />
+      <TextField fx:id="txtObs" layoutX="100.0" layoutY="220.0" />
+      <TextField fx:id="txtAno" layoutX="100.0" layoutY="260.0" />
+   </children>
+</AnchorPane>

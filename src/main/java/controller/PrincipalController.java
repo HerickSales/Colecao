@@ -15,7 +15,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import model.Carro;
 import model.dao.CarroDaoJdbc;
 import model.dao.DaoFactory;
@@ -66,7 +68,7 @@ public class PrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //carregarCarros("");
+        carregarCarros("");
     }    
 
     @FXML
@@ -88,18 +90,29 @@ public class PrincipalController implements Initializable {
     }
     
     private void carregarCarros(String param) {
-        //tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        //tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        //tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
+        tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
         
-        //try {
-            //CarroDaoJdbc dao = DaoFactory.novoCarroDao();
-            //listaCarros = dao.listar(param);
-        //} catch (Exception ex) {
-            //System.out.println(ex.getMessage());
-        //}
-        //observableListCarros = FXCollections.observableArrayList(listaCarros);
-       // tblCarros.setItems(observableListCarros);
+        try {
+            CarroDaoJdbc dao = DaoFactory.novoCarroDao();
+            listaCarros = dao.listar(param);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+       }
+        if(listaCarros.size() != 0) {            
+            observableListCarros = FXCollections.observableArrayList(listaCarros);
+            tblCarros.setItems(observableListCarros);
+        }
+    }   
+
+    @FXML
+    private void tblCarrosOnClick(MouseEvent event) {
+        var carroSelecionado = tblCarros.selectionModelProperty().getValue().getSelectedItem();
+        lblKm.setText(String.valueOf(carroSelecionado.getKilometragem()));
+        lblAno.setText(String.valueOf(carroSelecionado.getAno()));
+        lblObs.setText(String.valueOf(carroSelecionado.getObservacao()));
+        Image image = new Image(carroSelecionado.getFoto());
+        imgCarro.setImage(image);
     }
-    
 }

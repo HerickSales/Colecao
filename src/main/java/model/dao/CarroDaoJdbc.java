@@ -20,7 +20,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO CARROS (NOME, PLACA, STATUS, KILOMETRAGEM, ANO, OBSERVACAO, FOTO) VALUES(?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, entidade.getNome());
             ps.setString(2, entidade.getPlaca());
-            ps.setInt(3, entidade.getStatus());
+            ps.setString(3, entidade.getStatus());
             ps.setInt(4, entidade.getKilometragem());
             ps.setString(5, entidade.getAno());
             ps.setString(6, entidade.getObservacao());
@@ -39,7 +39,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
             PreparedStatement ps = conn.prepareStatement("UPDATE CARROS SET NOME=?, PLACA=?, STATUS=?, KILOMETRAGEM=?, ANO=?, OBSERVACAO=?, FOTO=?  WHERE id=?");
             ps.setString(1, entidade.getNome());
             ps.setString(2, entidade.getPlaca());
-            ps.setInt(3, entidade.getStatus());
+            ps.setString(3, entidade.getStatus());
             ps.setInt(4, entidade.getKilometragem());
             ps.setString(5, entidade.getAno());
             ps.setString(6, entidade.getObservacao());
@@ -78,7 +78,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("NOME"));
                 c.setPlaca(rs.getString("PLACA"));
-                c.setStatus(rs.getInt("STATUS"));
+                c.setStatus(rs.getString("STATUS"));
                 c.setKilometragem(rs.getInt("KILOMETRAGEM"));
                 c.setAno(rs.getString("ANO"));
                 c.setObservacao(rs.getString("OBSERVACAO"));
@@ -107,7 +107,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
                 c.setId(rs.getInt("ID"));
                 c.setNome(rs.getString("NOME"));
                 c.setPlaca(rs.getString("PLACA"));
-                c.setStatus(rs.getInt("STATUS"));
+                c.setStatus(rs.getString("STATUS"));
                 c.setKilometragem(rs.getInt("KILOMETRAGEM"));
                 c.setAno(rs.getString("ANO"));
                 c.setObservacao(rs.getString("OBSERVACAO"));
@@ -141,7 +141,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
                  c.setId(rs.getInt("ID"));
                 c.setNome(rs.getString("NOME"));
                 c.setPlaca(rs.getString("PLACA"));
-                c.setStatus(rs.getInt("STATUS"));
+                c.setStatus(rs.getString("STATUS"));
                 c.setKilometragem(rs.getInt("KILOMETRAGEM"));
                 c.setAno(rs.getString("ANO"));
                 c.setObservacao(rs.getString("OBSERVACAO"));

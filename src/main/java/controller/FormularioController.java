@@ -67,6 +67,7 @@ public class FormularioController implements Initializable {
     private ToggleGroup statusGroup;
     
     private static Carro carroSelecionado;
+    private static Carro carroNovo;
 
     public static Carro getCarroSelecionado() {
         return carroSelecionado;
@@ -79,9 +80,20 @@ public class FormularioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        carroNovo = new Carro();
         radDisponivel.setToggleGroup(statusGroup);
         radAlugado.setToggleGroup(statusGroup);
         radManutencao.setToggleGroup(statusGroup);
+        
+        statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == radDisponivel) {
+                carroNovo.setStatus("Disponivel");
+            } else if(newValue == radAlugado) {
+                carroNovo.setStatus("Alugado");
+            } else if(newValue == radManutencao) {
+                carroNovo.setStatus("Manutenção");
+            }
+        }); 
         
         if(carroSelecionado != null) {
             txtNome.setText(carroSelecionado.getNome());
@@ -101,9 +113,9 @@ public class FormularioController implements Initializable {
                 new FileChooser.ExtensionFilter("PNG (.png)", "*png"), new FileChooser.ExtensionFilter("All images", "*jpg",".png"));
         File selectedFile = fileChooser.showOpenDialog(btnFoto.getScene().getWindow());
         if(selectedFile != null){
-            pathImage=selectedFile.getAbsolutePath();
+            pathImage=selectedFile.toURI().toString();
             System.out.println(pathImage);
-            Image image = new Image(selectedFile.toURI().toString());
+            Image image = new Image(pathImage);
             imgCarro.setImage(image);
             
         }else{
@@ -114,12 +126,11 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void btnSalvarOnAction(ActionEvent event) throws Exception {
-        Carro carro = new Carro();
-        carro.setNome(txtNome.getText());
-        carro.setPlaca(txtPlaca.getText());
-        carro.setKilometragem(Integer.parseInt(txtKm.getText()));
-        carro.setAno(txtAno.getText());
-        carro.setObservacao(txtObs.getText());
+        carroNovo.setNome(txtNome.getText());
+        carroNovo.setPlaca(txtPlaca.getText());
+        carroNovo.setKilometragem(Integer.parseInt(txtKm.getText()));
+        carroNovo.setAno(txtAno.getText());
+        carroNovo.setObservacao(txtObs.getText());
         if(pathImage==null){
             Alert alert= new Alert(AlertType.WARNING);
             alert.setTitle("ATENÇÃO");
@@ -127,28 +138,14 @@ public class FormularioController implements Initializable {
             alert.showAndWait();
             return;
         }
-        carro.setFoto(pathImage);
+        carroNovo.setFoto(pathImage);
         
-        System.out.print(carro);
-        
-        statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == radDisponivel) {
-                carro.setStatus(0);
-            } else if(newValue == radAlugado) {
-                carro.setStatus(1);
-            } else if(newValue == radManutencao) {
-                carro.setStatus(2);
-            } else {
-                carro.setStatus(0);
-            }
-        }); 
-
         CarroDaoJdbc dao = DaoFactory.novoCarroDao();
         if (carroSelecionado == null) {
-            dao.incluir(carro);
+            dao.incluir(carroNovo);
         } else {
-            carro.setId(carroSelecionado.getId());
-            dao.editar(carro);
+            carroNovo.setId(carroSelecionado.getId());
+            dao.editar(carroNovo);
             carroSelecionado = null;
         }
 

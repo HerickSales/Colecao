@@ -4,7 +4,7 @@ public class Carro {
     private int id;
     private String nome;
     private String placa;
-    private int status;
+    private String status;
     private int kilometragem;
     private String ano;
     private String observacao;
@@ -34,11 +34,11 @@ public class Carro {
         this.placa = placa;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
