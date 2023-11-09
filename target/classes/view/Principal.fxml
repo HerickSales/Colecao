@@ -22,9 +22,8 @@
       <ToolBar layoutX="5.0" layoutY="3.0" prefHeight="51.0" prefWidth="410.0">
         <items>
             <Label prefHeight="18.0" prefWidth="42.0" text="Filtro:" />
-            <TextField fx:id="txtFiltro" prefHeight="26.0" prefWidth="194.0" />
-            <Button fx:id="btnLimpar" mnemonicParsing="false" onAction="#btnLimparOnAction" prefHeight="26.0" prefWidth="64.0" text="Limpar" />
-            <Button fx:id="btnIncluir" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="26.0" prefWidth="75.0" text="Incluir" />
+            <TextField fx:id="txtFiltro" onKeyTyped="#onTyped" prefHeight="26.0" prefWidth="250.0" />
+            <Button fx:id="btnIncluir" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="26.0" prefWidth="95.0" text="Incluir" />
         </items>
       </ToolBar>
       <TableView fx:id="tblCarros" layoutX="5.0" layoutY="54.0" onMouseClicked="#tblCarrosOnClick" prefHeight="250.0" prefWidth="410.0">
@@ -40,16 +39,16 @@
       <Label layoutX="426.0" layoutY="272.0" text="Obs:" />
       <Button fx:id="btnEditar" layoutX="519.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnEditarOnAction" text="Editar" />
       <Button fx:id="btnExcluir" layoutX="584.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" text="Excluir" />
-      <Label fx:id="lblKm" layoutX="467.0" layoutY="185.0" text="Label" />
-      <Label fx:id="lblAno" layoutX="467.0" layoutY="229.0" text="Label" />
-      <Label fx:id="lblObs" layoutX="467.0" layoutY="272.0" text="Label" />
+      <Label fx:id="lblKm" layoutX="467.0" layoutY="185.0" />
+      <Label fx:id="lblAno" layoutX="467.0" layoutY="229.0" />
+      <Label fx:id="lblObs" layoutX="467.0" layoutY="272.0" />
       <Label layoutX="29.0" layoutY="313.0" text="Disponiveis:" />
       <Label layoutX="29.0" layoutY="333.0" text="Alugados:" />
       <Label layoutX="29.0" layoutY="354.0" text="Manutenção:" />
       <Label layoutX="29.0" layoutY="375.0" text="Total:" />
-      <Label fx:id="lblDisponives" layoutX="123.0" layoutY="313.0" text="Label" />
-      <Label fx:id="lblAlugados" layoutX="123.0" layoutY="333.0" text="Label" />
-      <Label fx:id="lblManutencao" layoutX="123.0" layoutY="354.0" text="Label" />
-      <Label fx:id="lblTotal" layoutX="123.0" layoutY="375.0" text="Label" />
+      <Label fx:id="lblDisponives" layoutX="123.0" layoutY="313.0" />
+      <Label fx:id="lblAlugados" layoutX="123.0" layoutY="333.0" />
+      <Label fx:id="lblManutencao" layoutX="123.0" layoutY="354.0" />
+      <Label fx:id="lblTotal" layoutX="123.0" layoutY="375.0" />
    </children>
 </AnchorPane>

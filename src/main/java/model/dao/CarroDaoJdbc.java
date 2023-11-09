@@ -44,6 +44,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
             ps.setString(5, entidade.getAno());
             ps.setString(6, entidade.getObservacao());
             ps.setString(7, entidade.getFoto());
+            ps.setInt(8,entidade.getId());
             ps.execute();
         } finally {
             if (conn != null) {
@@ -99,7 +100,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = conn.prepareStatement("SELECT * FROM CARROS WHERE PLACA = ?");
+            ps = conn.prepareStatement("SELECT * FROM CARROS WHERE PLACA=?");
             ps.setString(1, placa);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -132,7 +133,7 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
                 ps = conn.prepareStatement("SELECT * FROM CARROS");
             } else {
                 ps = conn.prepareStatement(
-                        "SELECT * FROM CARROS WHERE NOME like '%" + param + "%'");
+                        "SELECT * FROM CARROS WHERE NOME like '%" + param + "%' or PLACA like'%"+param+"%' ");
             }
             rs = ps.executeQuery();
             List<Carro> lista = new ArrayList();

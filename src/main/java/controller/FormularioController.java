@@ -81,6 +81,7 @@ public class FormularioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carroNovo = new Carro();
+        carroNovo.setStatus("Disponivel");
         radDisponivel.setToggleGroup(statusGroup);
         radAlugado.setToggleGroup(statusGroup);
         radManutencao.setToggleGroup(statusGroup);
@@ -101,6 +102,10 @@ public class FormularioController implements Initializable {
             txtKm.setText(String.valueOf(carroSelecionado.getKilometragem()));
             txtAno.setText(carroSelecionado.getAno());
             txtObs.setText(carroSelecionado.getObservacao());
+            pathImage=carroSelecionado.getFoto();
+            Image image= new Image(carroSelecionado.getFoto());
+            imgCarro.setImage(image);
+            
         }
     }    
 
@@ -126,6 +131,7 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void btnSalvarOnAction(ActionEvent event) throws Exception {
+        
         carroNovo.setNome(txtNome.getText());
         carroNovo.setPlaca(txtPlaca.getText());
         carroNovo.setKilometragem(Integer.parseInt(txtKm.getText()));

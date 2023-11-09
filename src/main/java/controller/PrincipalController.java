@@ -9,7 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.Carro;
 import model.dao.CarroDaoJdbc;
@@ -27,8 +32,6 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private TextField txtFiltro;
-    @FXML
-    private Button btnLimpar;
     @FXML
     private Button btnIncluir;
     @FXML
@@ -78,18 +81,34 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private void btnEditarOnAction(ActionEvent event) throws IOException {
-        App.setRoot("Formulario");
+        Carro carroSelecionado= tblCarros.selectionModelProperty().getValue().getSelectedItem();
+        if(carroSelecionado != null){
+            FormularioController.setCarroSelecionado(carroSelecionado);
+            App.setRoot("Formulario");
+        }else{
+            Alert alerta= new Alert(AlertType.WARNING);
+            alerta.setTitle("Erro");
+            alerta.setContentText("Nenhum item selecionado");
+        }
     }
 
-    @FXML
-    private void btnLimparOnAction(ActionEvent event) {
-    }
 
     @FXML
-    private void btnExcluirOnAction(ActionEvent event) {
+    private void btnExcluirOnAction(ActionEvent event) throws Exception {
+        Alert alerta= new Alert(AlertType.CONFIRMATION);
+        alerta.setTitle("ATENÇÃO");
+        alerta.setContentText("Tem certeza que deseja excluir este Item? ");
+        alerta.showAndWait();
+        if(alerta.getResult()== ButtonType.OK){
+            Carro carroSelecionado=  tblCarros.selectionModelProperty().getValue().getSelectedItem();
+            CarroDaoJdbc dao= DaoFactory.novoCarroDao();
+            dao.excluir(carroSelecionado);
+            limpaCampos();
+            carregarCarros("");
+        }   
     }
     
-    private void carregarCarros(String param) {
+    public void carregarCarros(String param) {
         tblNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         tblStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
         tblPlaca.setCellValueFactory(new PropertyValueFactory<>("Placa"));
@@ -100,10 +119,9 @@ public class PrincipalController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
        }
-        if(listaCarros.size() != 0) {            
             observableListCarros = FXCollections.observableArrayList(listaCarros);
             tblCarros.setItems(observableListCarros);
-        }
+        
     }   
 
     @FXML
@@ -114,5 +132,19 @@ public class PrincipalController implements Initializable {
         lblObs.setText(String.valueOf(carroSelecionado.getObservacao()));
         Image image = new Image(carroSelecionado.getFoto());
         imgCarro.setImage(image);
+    }
+
+
+    @FXML
+    private void onTyped(KeyEvent event) throws Exception {
+        carregarCarros(txtFiltro.getText());   
+    }
+    
+    private void limpaCampos(){
+        lblKm.setText("");
+        lblAno.setText("");
+        lblObs.setText("");
+        imgCarro.setImage(null);
+    
     }
 }
