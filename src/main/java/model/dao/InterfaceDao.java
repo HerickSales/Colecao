@@ -15,5 +15,4 @@ public interface InterfaceDao<T> {
     public abstract T pesquisarPorPlaca(String placa) throws Exception;
 
     public abstract List<T> listar(String param) throws Exception;
-    
 }

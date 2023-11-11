@@ -110,10 +110,10 @@ public class PrincipalController implements Initializable {
             listaCarros = dao.listar(param);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-       }
-            observableListCarros = FXCollections.observableArrayList(listaCarros);
-            tblCarros.setItems(observableListCarros);
+        }
         
+        observableListCarros = FXCollections.observableArrayList(listaCarros);
+        tblCarros.setItems(observableListCarros);
     }   
 
     @FXML
