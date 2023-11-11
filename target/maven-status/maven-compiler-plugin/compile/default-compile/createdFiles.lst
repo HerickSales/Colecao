@@ -1,9 +1,10 @@
-model\dao\DaoFactory.class
 controller\PrincipalController.class
-module-info.class
 controller\FormularioController.class
 model\Carro.class
 model\dao\CarroDaoJdbc.class
 model\dao\ConnFactory.class
-model\dao\InterfaceDao.class
 start\projetopadrao\App.class
+model\dao\DaoFactory.class
+module-info.class
+model\dao\InterfaceDao.class
+controller\EstatisticaController.class

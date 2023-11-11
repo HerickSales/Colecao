@@ -26,7 +26,7 @@
             <Button fx:id="btnIncluir" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="26.0" prefWidth="95.0" text="Incluir" />
         </items>
       </ToolBar>
-      <TableView fx:id="tblCarros" layoutX="5.0" layoutY="54.0" onMouseClicked="#tblCarrosOnClick" prefHeight="250.0" prefWidth="410.0">
+      <TableView fx:id="tblCarros" layoutX="5.0" layoutY="54.0" onMouseClicked="#tblCarrosOnClick" prefHeight="350.0" prefWidth="410.0">
         <columns>
           <TableColumn fx:id="tblNome" prefWidth="151.19997882843018" text="Nome" />
           <TableColumn fx:id="tblStatus" prefWidth="121.60005187988281" text="Status" />
@@ -37,18 +37,11 @@
       <Label layoutX="427.0" layoutY="185.0" text="Km:" />
       <Label layoutX="427.0" layoutY="229.0" text="Ano:" />
       <Label layoutX="426.0" layoutY="272.0" text="Obs:" />
-      <Button fx:id="btnEditar" layoutX="519.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnEditarOnAction" text="Editar" />
-      <Button fx:id="btnExcluir" layoutX="584.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" text="Excluir" />
+      <Button fx:id="btnEditar" layoutX="444.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnEditarOnAction" text="Editar" />
+      <Button fx:id="btnExcluir" layoutX="505.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" text="Excluir" />
       <Label fx:id="lblKm" layoutX="467.0" layoutY="185.0" />
       <Label fx:id="lblAno" layoutX="467.0" layoutY="229.0" />
       <Label fx:id="lblObs" layoutX="467.0" layoutY="272.0" />
-      <Label layoutX="29.0" layoutY="313.0" text="Disponiveis:" />
-      <Label layoutX="29.0" layoutY="333.0" text="Alugados:" />
-      <Label layoutX="29.0" layoutY="354.0" text="Manutenção:" />
-      <Label layoutX="29.0" layoutY="375.0" text="Total:" />
-      <Label fx:id="lblDisponives" layoutX="123.0" layoutY="313.0" />
-      <Label fx:id="lblAlugados" layoutX="123.0" layoutY="333.0" />
-      <Label fx:id="lblManutencao" layoutX="123.0" layoutY="354.0" />
-      <Label fx:id="lblTotal" layoutX="123.0" layoutY="375.0" />
+      <Button layoutX="576.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnEstatisticasOnClick" text="Estatisticas" />
    </children>
 </AnchorPane>

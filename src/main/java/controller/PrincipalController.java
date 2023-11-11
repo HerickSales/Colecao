@@ -54,14 +54,6 @@ public class PrincipalController implements Initializable {
     private Label lblAno;
     @FXML
     private Label lblObs;
-    @FXML
-    private Label lblDisponives;
-    @FXML
-    private Label lblAlugados;
-    @FXML
-    private Label lblManutencao;
-    @FXML
-    private Label lblTotal;
     
     private List<Carro> listaCarros;
     private ObservableList<Carro> observableListCarros;
@@ -146,5 +138,10 @@ public class PrincipalController implements Initializable {
         lblObs.setText("");
         imgCarro.setImage(null);
     
+    }
+
+    @FXML
+    private void btnEstatisticasOnClick(ActionEvent event) throws IOException {
+        App.setRoot("Estatistica");
     }
 }
