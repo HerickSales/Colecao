@@ -102,6 +102,18 @@ public class FormularioController implements Initializable {
             txtKm.setText(String.valueOf(carroSelecionado.getKilometragem()));
             txtAno.setText(carroSelecionado.getAno());
             txtObs.setText(carroSelecionado.getObservacao());
+            switch (carroSelecionado.getStatus()) {
+                case "Disponivel":
+                    statusGroup.selectToggle(radDisponivel);
+                    break;
+                case "Manutenção":
+                    statusGroup.selectToggle(radManutencao);
+                    break;
+                default:
+                    statusGroup.selectToggle(radAlugado);
+                    break;
+            }
+            
             pathImage=carroSelecionado.getFoto();
             Image image= new Image(carroSelecionado.getFoto());
             imgCarro.setImage(image);

@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.Carro;
 import model.dao.CarroDaoJdbc;
 import model.dao.DaoFactory;
@@ -57,6 +58,8 @@ public class PrincipalController implements Initializable {
     
     private List<Carro> listaCarros;
     private ObservableList<Carro> observableListCarros;
+    @FXML
+    private AnchorPane apPainel;
 
     /**
      * Initializes the controller class.
@@ -143,5 +146,11 @@ public class PrincipalController implements Initializable {
     @FXML
     private void btnEstatisticasOnClick(ActionEvent event) throws IOException {
         App.setRoot("Estatistica");
+    }
+
+    @FXML
+    private void painelOnClick(MouseEvent event) {
+        tblCarros.getSelectionModel().clearSelection();
+        limpaCampos();
     }
 }
