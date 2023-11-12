@@ -19,6 +19,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -56,8 +57,6 @@ public class FormularioController implements Initializable {
     @FXML
     private AnchorPane paneCadastro;
     @FXML
-    private ToolBar toolbarCadastro;
-    @FXML
     private RadioButton radDisponivel;
     @FXML
     private RadioButton radAlugado;
@@ -65,6 +64,8 @@ public class FormularioController implements Initializable {
     private RadioButton radManutencao;
     @FXML
     private ToggleGroup statusGroup;
+    @FXML
+    private ImageView iconGaleria;
     
     private static Carro carroSelecionado;
     private static Carro carroNovo;
@@ -76,16 +77,22 @@ public class FormularioController implements Initializable {
     public static void setCarroSelecionado(Carro carroSelecionado) {
         FormularioController.carroSelecionado = carroSelecionado;
     }
+
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carroNovo = new Carro();
         carroNovo.setStatus("Disponivel");
+        File f=new File("./Files/icons/galeria.png");
+        String iconPath= f.toURI().toString();
+        Image icon= new Image(iconPath);
+        iconGaleria.setImage(icon);
+        
         radDisponivel.setToggleGroup(statusGroup);
         radAlugado.setToggleGroup(statusGroup);
         radManutencao.setToggleGroup(statusGroup);
-        
+     
         statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == radDisponivel) {
                 carroNovo.setStatus("Disponivel");
@@ -121,25 +128,6 @@ public class FormularioController implements Initializable {
         }
     }    
 
-    @FXML
-    private void btnEscolherFotoOnAction(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Selecione uma imagem");
-        fileChooser.setInitialDirectory(new File("C:\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG (.jpeg)", ".jpg"),
-                new FileChooser.ExtensionFilter("PNG (.png)", "*png"), new FileChooser.ExtensionFilter("All images", "*jpg",".png"));
-        File selectedFile = fileChooser.showOpenDialog(btnFoto.getScene().getWindow());
-        if(selectedFile != null){
-            pathImage=selectedFile.toURI().toString();
-            System.out.println(pathImage);
-            Image image = new Image(pathImage);
-            imgCarro.setImage(image);
-            
-        }else{
-            System.out.println("Nenhum arquivo foi selecionado");
-        }
-        
-    }
 
     @FXML
     private void btnSalvarOnAction(ActionEvent event) throws Exception {
@@ -174,5 +162,26 @@ public class FormularioController implements Initializable {
     private void btnCancelarOnAction(ActionEvent event) throws Exception {
         App.setRoot("Principal");
     }
+
+    @FXML
+    private void galeriaOnClick(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecione uma imagem");
+        fileChooser.setInitialDirectory(new File("C:\\"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG (.jpeg)", ".jpg"),
+                new FileChooser.ExtensionFilter("PNG (.png)", "*png"), new FileChooser.ExtensionFilter("All images", "*jpg",".png"));
+        File selectedFile = fileChooser.showOpenDialog(iconGaleria.getScene().getWindow());
+        if(selectedFile != null){
+            pathImage=selectedFile.toURI().toString();
+            System.out.println(pathImage);
+            Image image = new Image(pathImage);
+            imgCarro.setImage(image);
+            
+        }else{
+            System.out.println("Nenhum arquivo foi selecionado");
+        }
+        
+    }
+    }
     
-}
+

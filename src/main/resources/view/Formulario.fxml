@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -8,32 +9,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="paneCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="673.0" styleClass="All" stylesheets="@../values/Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
+<AnchorPane id="AnchorPane" fx:id="paneCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="674.0" styleClass="All" stylesheets="@../values/Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
    <children>
-      <Label layoutX="35.0" layoutY="60.0" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" text="Nome" />
-      <Label layoutX="35.0" layoutY="100.0" mouseTransparent="true" text="Placa" />
-      <Label layoutX="35.0" layoutY="140.0" mouseTransparent="true" text="Status" />
-      <Label layoutX="35.0" layoutY="260.0" mouseTransparent="true" text="Ano" />
-      <Label layoutX="35.0" layoutY="180.0" mouseTransparent="true" prefHeight="18.0" prefWidth="28.0" text="Km" />
-      <Label layoutX="35.0" layoutY="220.0" mouseTransparent="true" text="Obs" />
-      <ImageView fx:id="imgCarro" fitHeight="150.0" fitWidth="200.0" layoutX="370.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnFoto" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnEscolherFotoOnAction" text="Escolher Foto" />
-      <Button fx:id="btnSalvar" layoutX="20.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" text="Salvar" />
-      <Button fx:id="btnCancelar" layoutX="76.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnCancelarOnAction" text="Cancelar" />
-      <RadioButton fx:id="radDisponivel" layoutX="89.0" layoutY="145.0" mnemonicParsing="false" selected="true" text="Disponivel">
-         <toggleGroup>
-            <ToggleGroup fx:id="statusGroup" />
-         </toggleGroup></RadioButton>
-      <RadioButton fx:id="radAlugado" layoutX="179.0" layoutY="145.0" mnemonicParsing="false" text="Alugado" toggleGroup="$statusGroup" />
-      <RadioButton fx:id="radManutencao" layoutX="260.0" layoutY="145.0" mnemonicParsing="false" text="Manutenção" toggleGroup="$statusGroup" />
-      <TextField fx:id="txtNome" layoutX="100.0" layoutY="60.0" />
-      <TextField fx:id="txtPlaca" layoutX="100.0" layoutY="100.0" />
-      <TextField fx:id="txtKm" layoutX="100.0" layoutY="180.0" />
-      <TextField fx:id="txtObs" layoutX="100.0" layoutY="220.0" />
-      <TextField fx:id="txtAno" layoutX="100.0" layoutY="260.0" />
-      <HBox alignment="CENTER" layoutX="-6.0" layoutY="-1.0" prefHeight="34.0" prefWidth="680.0" styleClass="header">
+      <HBox alignment="CENTER" layoutX="-6.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="705.0">
          <children>
             <Label text="CADASTRO">
                <font>
@@ -42,5 +24,98 @@
             </Label>
          </children>
       </HBox>
+      <VBox layoutX="3.0" layoutY="33.0" prefHeight="368.0" prefWidth="333.0" styleClass="boxCadastro">
+         <children>
+            <Label text="Nome">
+               <font>
+                  <Font name="Cambria Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNome" prefHeight="25.0" promptText="Qual nome do carro?" styleClass="input" />
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <Label text="Placa">
+               <font>
+                  <Font name="Cambria Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPlaca" prefHeight="25.0" promptText="Qual a placa do carro?" styleClass="input" />
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="322.0" styleClass="boxRadio">
+               <children>
+                  <Label mouseTransparent="true" prefHeight="22.0" prefWidth="69.0" text="Status:">
+                     <font>
+                        <Font name="Cambria Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="36.0" prefWidth="10.0" />
+                  <RadioButton fx:id="radDisponivel" mnemonicParsing="false" selected="true" text="Disponivel">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="statusGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Pane prefHeight="36.0" prefWidth="5.0" />
+                  <RadioButton fx:id="radAlugado" mnemonicParsing="false" text="Alugado" toggleGroup="$statusGroup">
+                     <font>
+                        <Font name="Cambria" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <Pane prefHeight="200.0" prefWidth="5.0" />
+                  <RadioButton fx:id="radManutencao" mnemonicParsing="false" text="Manutenção" toggleGroup="$statusGroup" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" right="5.0" />
+               </padding>
+            </HBox>
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <Label text="Km">
+               <font>
+                  <Font name="Cambria Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtKm" prefHeight="25.0" promptText="Quantos quilometros rodados?" styleClass="input" />
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <Label text="IObs">
+               <font>
+                  <Font name="Cambria Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtObs" prefHeight="25.0" promptText="Há alguma informação adicional sobre o carro?" styleClass="input" />
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <Label text="Ano">
+               <font>
+                  <Font name="Cambria Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAno" prefHeight="25.0" promptText="qual ano de fabricação?" styleClass="input" />
+         </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="BOTTOM_RIGHT" layoutX="353.0" layoutY="175.0" prefHeight="218.0" prefWidth="319.0">
+         <children>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="90.0" prefWidth="319.0">
+               <children>
+                  <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvarOnAction" styleClass="btn" text="Salvar" />
+                  <Pane prefHeight="100.0" prefWidth="50.0" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelarOnAction" styleClass="btn" text="Cancelar" />
+                  <Pane prefHeight="90.0" prefWidth="13.0" />
+               </children>
+            </HBox>
+            <Pane prefHeight="15.0" prefWidth="319.0" />
+         </children>
+      </VBox>
+      <HBox alignment="TOP_CENTER" layoutX="458.0" layoutY="43.0" prefHeight="145.0" prefWidth="143.0" styleClass="imagem">
+         <children>
+            <ImageView fx:id="imgCarro" fitHeight="106.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="512.0" layoutY="153.0" prefHeight="29.0" prefWidth="34.0" styleClass="icon">
+         <children>
+            <ImageView fx:id="iconGaleria" fitHeight="30.0" fitWidth="33.0" onMouseClicked="#galeriaOnClick" pickOnBounds="true" preserveRatio="true" />
+         </children></VBox>
    </children>
 </AnchorPane>

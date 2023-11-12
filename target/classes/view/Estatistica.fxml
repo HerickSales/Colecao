@@ -1,25 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EstatisticaController">
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="680.0" styleClass="All" stylesheets="@../values/Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EstatisticaController">
    <children>
-      <ToolBar layoutY="8.0" prefHeight="40.0" prefWidth="680.0">
-        <items>
-            <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#btnVoltarOnAction" text="&lt;-" />
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="610.0" text="ESTATISTICAS" />
-        </items>
-      </ToolBar>
-      <PieChart fx:id="pcEstatistica" layoutX="3.0" layoutY="59.0" prefHeight="350.0" prefWidth="338.0" />
-      <Label layoutX="349.0" layoutY="59.0" text="Alugados:" />
-      <Label layoutX="349.0" layoutY="84.0" text="Disponiveis:" />
-      <Label layoutX="349.0" layoutY="112.0" text="Em Manutenção:" />
-      <Label fx:id="lblAlugados" layoutX="412.0" layoutY="59.0" text="Label" />
-      <Label fx:id="lblDisponiveis" layoutX="424.0" layoutY="84.0" text="Label" />
-      <Label fx:id="lblManutencao" layoutX="452.0" layoutY="112.0" text="Label" />
+      <PieChart fx:id="pcEstatistica" layoutX="3.0" layoutY="37.0" prefHeight="372.0" prefWidth="338.0" />
+      <HBox alignment="CENTER" layoutX="36.0" layoutY="2.0" prefHeight="26.0" prefWidth="644.0">
+         <children>
+            <Label text="Estatisticas">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="367.0" layoutY="148.0" prefHeight="83.0" prefWidth="308.0">
+         <children>
+            <HBox prefHeight="19.0" prefWidth="70.0">
+               <children>
+                  <Label text="Alugados:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="19.0" prefWidth="70.0" />
+                  <Label fx:id="lblAlugados" text="Label">
+                     <font>
+                        <Font name="Cambria" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="200.0">
+               <children>
+                  <Label text="Em Manutenção:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="19.0" prefWidth="26.0" />
+                  <Label fx:id="lblManutencao" text="Label">
+                     <font>
+                        <Font name="Cambria" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="22.0" prefWidth="200.0">
+               <children>
+                  <Label text="Disponiveis:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="20.0" prefWidth="55.0" />
+                  <Label fx:id="lblDisponiveis" text="Label">
+                     <font>
+                        <Font name="Cambria" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="btnVoltar" layoutX="3.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnVoltarOnAction" styleClass="btn" stylesheets="@../values/Styles.css" text="&lt;-" />
+      <Pane layoutX="-67.0" layoutY="-213.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

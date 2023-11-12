@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#868686;
     
 }
-.search{
+.input{
     -fx-background-color:#fefefe;
     -fx-background-radius:100;
     
@@ -23,6 +23,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .transparent{
     -fx-background-color:#fefefe;
+    -fx-background-radius:100;
+    
 }
 
 .btn{
@@ -30,13 +32,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#4682b4;
     -fx-text-fill:#fefefe;
 }
+.btn:hover{
+    -fx-background-color:#000086;
+}
 
 .imagem{
     -fx-border-width:1.5;
     -fx-border-color:#fefefe;
-    
 }
-
-
-    
-    
+.boxRadio{
+    -fx-border-width:2;
+    -fx-border-color:#fefefe;
+    -fx-border-radius:100;
+}
+.icon:hover{
+    -fx-background-color:#666666;
+}

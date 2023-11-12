@@ -27,14 +27,18 @@
       <Button layoutX="595.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnEstatisticasOnClick" styleClass="btn" text="Estatisticas" />
       <VBox layoutX="8.0" prefHeight="423.0" prefWidth="422.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="413.0" styleClass="search" stylesheets="@../values/Styles.css">
+            <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="413.0" styleClass="transparent" stylesheets="@../values/Styles.css">
                <children>
-                  <Pane prefHeight="0.0" prefWidth="15.0" />
-                  <TextField fx:id="txtFiltro" onKeyTyped="#onTyped" prefHeight="26.0" prefWidth="221.0" promptText="Pesquisar..." styleClass="transparent" />
-                  <Pane prefHeight="46.0" prefWidth="65.0" stylesheets="@../values/Styles.css" />
-                  <Button fx:id="btnIncluir" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="26.0" prefWidth="95.0" styleClass="btn" text="Incluir">
+                  <VBox alignment="CENTER" prefHeight="33.0" prefWidth="51.0">
+                     <children>
+                        <ImageView fx:id="iconLupa" fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <TextField fx:id="txtFiltro" onKeyTyped="#onTyped" prefHeight="26.0" prefWidth="195.0" promptText="Pesquisar..." styleClass="input" />
+                  <Pane prefHeight="46.0" prefWidth="86.0" stylesheets="@../values/Styles.css" />
+                  <Button fx:id="btnIncluir" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="46.0" prefWidth="95.0" styleClass="btn" text="Incluir">
                      <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="Cambria" size="12.0" />
@@ -50,7 +54,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="tblCarros" onMouseClicked="#tblCarrosOnClick" prefHeight="322.0" prefWidth="412.0">
+            <TableView fx:id="tblCarros" onMouseClicked="#tblCarrosOnClick" prefHeight="379.0" prefWidth="413.0">
               <columns>
                 <TableColumn fx:id="tblNome" prefWidth="151.19997882843018" text="Nome" />
                 <TableColumn fx:id="tblStatus" prefWidth="121.60005187988281" text="Status" />
@@ -71,51 +75,65 @@
          </children>
       </VBox>
       <VBox layoutX="488.0" layoutY="267.0" prefHeight="51.0" prefWidth="222.0" />
-      <HBox layoutX="476.0" layoutY="211.0" prefHeight="22.0" prefWidth="200.0">
-         <children>
-            <Pane prefHeight="9.0" prefWidth="46.0" />
-            <Label fx:id="lblAno" prefHeight="22.0" prefWidth="65.0">
-               <font>
-                  <Font name="Cambria" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox layoutX="476.0" layoutY="256.0" prefHeight="18.0" prefWidth="200.0">
-         <children>
-            <Pane prefHeight="100.0" prefWidth="0.0" />
-            <Pane prefHeight="9.0" prefWidth="46.0" />
-            <Label fx:id="lblKm" prefHeight="30.0" prefWidth="65.0">
-               <font>
-                  <Font name="Cambria" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <Button fx:id="btnExcluir" layoutX="513.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" styleClass="btn" text="Excluir" />
-      <HBox layoutX="454.0" layoutY="260.0" prefHeight="65.0" prefWidth="195.0">
+      <VBox layoutX="464.0" layoutY="202.0" prefHeight="143.0" prefWidth="222.0">
          <children>
-            <Label prefHeight="22.0" prefWidth="41.0" text="Obs:">
-               <font>
-                  <Font name="Cambria Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblObs" alignment="TOP_LEFT" prefHeight="86.0" prefWidth="110.0" wrapText="true">
-               <font>
-                  <Font name="Cambria" size="16.0" />
-               </font>
-            </Label>
+            <HBox prefHeight="22.0" prefWidth="200.0">
+               <children>
+                  <Label text="Ano:">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="22.0" prefWidth="46.0" />
+                  <Label fx:id="lblAno" prefHeight="22.0" prefWidth="110.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="100.0" prefWidth="0.0" />
+                  <Label text="Km: ">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Pane prefHeight="16.0" prefWidth="46.0" />
+                  <Label fx:id="lblKm" prefHeight="30.0" prefWidth="110.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="65.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="41.0" text="Obs:">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="66.0" prefWidth="46.0" />
+                  <Label fx:id="lblObs" alignment="TOP_LEFT" prefHeight="86.0" prefWidth="110.0" wrapText="true">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-      </HBox>
-      <Label layoutX="454.0" layoutY="185.0" text="Ano:">
-         <font>
-            <Font name="Cambria Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="455.0" layoutY="222.0" text="Km: ">
-         <font>
-            <Font name="Cambria Bold" size="18.0" />
-         </font>
-      </Label>
+      </VBox>
    </children>
 </AnchorPane>

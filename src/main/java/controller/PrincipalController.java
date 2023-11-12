@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -55,11 +56,14 @@ public class PrincipalController implements Initializable {
     private Label lblAno;
     @FXML
     private Label lblObs;
+    @FXML
+    private AnchorPane apPainel;
+    @FXML
+    private ImageView iconLupa;
     
     private List<Carro> listaCarros;
     private ObservableList<Carro> observableListCarros;
-    @FXML
-    private AnchorPane apPainel;
+
 
     /**
      * Initializes the controller class.
@@ -67,6 +71,10 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carregarCarros("");
+        File f=new File("./Files/icons/lupa.png");
+        String iconPath= f.toURI().toString();
+        Image icon= new Image(iconPath);
+        iconLupa.setImage(icon);
     }    
 
     @FXML

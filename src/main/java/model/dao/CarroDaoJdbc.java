@@ -66,63 +66,6 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
         }
     }
 
-    @Override
-    public Carro pesquisarPorId(int id) throws Exception {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
-            ps = conn.prepareStatement("SELECT * FROM CARROS WHERE ID = ?");
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                Carro c = new Carro();
-                c.setId(rs.getInt("id"));
-                c.setNome(rs.getString("NOME"));
-                c.setPlaca(rs.getString("PLACA"));
-                c.setStatus(rs.getString("STATUS"));
-                c.setKilometragem(rs.getInt("KILOMETRAGEM"));
-                c.setAno(rs.getString("ANO"));
-                c.setObservacao(rs.getString("OBSERVACAO"));
-                c.setFoto(rs.getString("FOTO"));
-                return c;
-            } else {
-                return null;
-            }   
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
-    
-    @Override
-    public Carro pesquisarPorPlaca(String placa) throws Exception {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
-            ps = conn.prepareStatement("SELECT * FROM CARROS WHERE PLACA=?");
-            ps.setString(1, placa);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                Carro c = new Carro();
-                c.setId(rs.getInt("ID"));
-                c.setNome(rs.getString("NOME"));
-                c.setPlaca(rs.getString("PLACA"));
-                c.setStatus(rs.getString("STATUS"));
-                c.setKilometragem(rs.getInt("KILOMETRAGEM"));
-                c.setAno(rs.getString("ANO"));
-                c.setObservacao(rs.getString("OBSERVACAO"));
-                c.setFoto(rs.getString("FOTO"));
-                return c;
-            } else {
-                return null;
-            }   
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
 
     @Override
     public List<Carro> listar(String param) throws Exception {
