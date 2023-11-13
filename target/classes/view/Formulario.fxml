@@ -95,7 +95,7 @@
             <Insets top="5.0" />
          </padding>
       </VBox>
-      <VBox alignment="BOTTOM_RIGHT" layoutX="353.0" layoutY="175.0" prefHeight="218.0" prefWidth="319.0">
+      <VBox alignment="BOTTOM_RIGHT" layoutX="352.0" layoutY="217.0" prefHeight="106.0" prefWidth="319.0">
          <children>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="90.0" prefWidth="319.0">
                <children>
@@ -119,5 +119,13 @@
          <children>
             <ImageView fx:id="iconGaleria" fitHeight="30.0" fitWidth="33.0" onMouseClicked="#galeriaOnClick" pickOnBounds="true" preserveRatio="true" />
          </children></VBox>
+      <Label fx:id="lblErro" alignment="TOP_LEFT" layoutX="381.0" layoutY="333.0" prefHeight="69.0" prefWidth="294.0" textFill="RED">
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

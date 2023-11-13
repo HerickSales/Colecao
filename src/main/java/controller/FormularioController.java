@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -49,8 +50,6 @@ public class FormularioController implements Initializable {
     @FXML
     private ImageView imgCarro;
     @FXML
-    private Button btnFoto;
-    @FXML
     private Button btnSalvar;
     @FXML
     private Button btnCancelar;
@@ -77,6 +76,8 @@ public class FormularioController implements Initializable {
     public static void setCarroSelecionado(Carro carroSelecionado) {
         FormularioController.carroSelecionado = carroSelecionado;
     }
+    @FXML
+    private Label lblErro;
 
     
     
@@ -94,7 +95,7 @@ public class FormularioController implements Initializable {
         radManutencao.setToggleGroup(statusGroup);
      
         statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == radDisponivel) {
+            if(newValue == radDisponivel){
                 carroNovo.setStatus("Disponivel");
             } else if(newValue == radAlugado) {
                 carroNovo.setStatus("Alugado");
@@ -131,30 +132,33 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void btnSalvarOnAction(ActionEvent event) throws Exception {
-        
+        try{
         carroNovo.setNome(txtNome.getText());
         carroNovo.setPlaca(txtPlaca.getText());
         carroNovo.setKilometragem(Integer.parseInt(txtKm.getText()));
         carroNovo.setAno(txtAno.getText());
         carroNovo.setObservacao(txtObs.getText());
         if(pathImage==null){
-            Alert alert= new Alert(AlertType.WARNING);
-            alert.setTitle("ATENÇÃO");
-            alert.setContentText("IMAGEM NAO FOI ESCOLHIDA");
-            alert.showAndWait();
+            lblErro.setText("Por favor escolha uma foto");
             return;
         }
         carroNovo.setFoto(pathImage);
-        
-        CarroDaoJdbc dao = DaoFactory.novoCarroDao();
-        if (carroSelecionado == null) {
-            dao.incluir(carroNovo);
-        } else {
-            carroNovo.setId(carroSelecionado.getId());
-            dao.editar(carroNovo);
-            carroSelecionado = null;
-        }
-
+            CarroDaoJdbc dao = DaoFactory.novoCarroDao();
+            
+            if (carroSelecionado == null) {
+                dao.incluir(carroNovo);
+            }else {
+                carroNovo.setId(carroSelecionado.getId());
+                dao.editar(carroNovo);
+                carroSelecionado = null;
+            }
+        }catch(NumberFormatException e){
+            lblErro.setText("Por favor, Confira os campos do Formulario");
+            return;
+        }catch(Exception e){
+            lblErro.setText("Ocorreu um erro.");
+            return;
+        }            
         App.setRoot("Principal");
     }
 
@@ -178,7 +182,7 @@ public class FormularioController implements Initializable {
             imgCarro.setImage(image);
             
         }else{
-            System.out.println("Nenhum arquivo foi selecionado");
+            lblErro.setText("Nenhum arquivo Selecionado");
         }
         
     }

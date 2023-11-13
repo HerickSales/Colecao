@@ -26,6 +26,8 @@ public class CarroDaoJdbc implements InterfaceDao<Carro> {
             ps.setString(6, entidade.getObservacao());
             ps.setString(7, entidade.getFoto());
             ps.execute();
+        }catch(NumberFormatException e){
+            throw new NumberFormatException("Por favor, confira os campos preenchidos");
         } finally {
             if (conn != null) {
                 conn.close();

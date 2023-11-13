@@ -61,6 +61,10 @@ public class PrincipalController implements Initializable {
     @FXML
     private ImageView iconLupa;
     
+    @FXML
+    private Label lblErro;
+
+    
     private List<Carro> listaCarros;
     private ObservableList<Carro> observableListCarros;
 
@@ -89,9 +93,7 @@ public class PrincipalController implements Initializable {
             FormularioController.setCarroSelecionado(carroSelecionado);
             App.setRoot("Formulario");
         }else{
-            Alert alerta= new Alert(AlertType.WARNING);
-            alerta.setTitle("Erro");
-            alerta.setContentText("Nenhum item selecionado");
+            lblErro.setText("Por favor escolha um item para ser selecionado");
         }
     }
 
@@ -103,12 +105,18 @@ public class PrincipalController implements Initializable {
         alerta.setContentText("Tem certeza que deseja excluir este Item? ");
         alerta.showAndWait();
         if(alerta.getResult()== ButtonType.OK){
-            Carro carroSelecionado=  tblCarros.selectionModelProperty().getValue().getSelectedItem();
-            CarroDaoJdbc dao= DaoFactory.novoCarroDao();
-            dao.excluir(carroSelecionado);
-            limpaCampos();
-            carregarCarros("");
-        }   
+            try{
+                Carro carroSelecionado=  tblCarros.selectionModelProperty().getValue().getSelectedItem();
+                CarroDaoJdbc dao= DaoFactory.novoCarroDao();
+                dao.excluir(carroSelecionado);
+                limpaCampos();
+                carregarCarros("");
+            }catch(NullPointerException e){
+                lblErro.setText("Por favor escolha um item para ser excluido");
+            }catch(Exception e){
+                lblErro.setText("ocorreu um erro");
+            }
+        }
     }
     
     public void carregarCarros(String param) {
@@ -121,6 +129,7 @@ public class PrincipalController implements Initializable {
             listaCarros = dao.listar(param);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            lblErro.setText("Erro carregar dados");
         }
         
         observableListCarros = FXCollections.observableArrayList(listaCarros);
@@ -147,6 +156,7 @@ public class PrincipalController implements Initializable {
         lblKm.setText("");
         lblAno.setText("");
         lblObs.setText("");
+        lblErro.setText("");
         imgCarro.setImage(null);
     
     }
