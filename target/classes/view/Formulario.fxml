@@ -99,8 +99,10 @@
          <children>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="90.0" prefWidth="319.0">
                <children>
-                  <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvarOnAction" styleClass="btn" text="Salvar" />
-                  <Pane prefHeight="100.0" prefWidth="50.0" />
+                  <Pane prefHeight="100.0" prefWidth="50.0">
+                     <children>
+                        <Button fx:id="btnSalvar" layoutX="-2.0" layoutY="65.0" mnemonicParsing="false" onAction="#btnSalvarOnAction" styleClass="btn" text="Salvar" />
+                     </children></Pane>
                   <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#btnCancelarOnAction" styleClass="btn" text="Cancelar" />
                   <Pane prefHeight="90.0" prefWidth="13.0" />
                </children>
