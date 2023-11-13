@@ -23,8 +23,8 @@
           <TitledPane animated="false" text="untitled 3" />
         </panes>
       </Accordion>
-      <Button fx:id="btnEditar" layoutX="441.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnEditarOnAction" styleClass="btn" text="Editar" />
-      <Button layoutX="595.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnEstatisticasOnClick" styleClass="btn" text="Estatisticas" />
+      <Button fx:id="btnEditar" layoutX="441.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnEditarOnAction" styleClass="btn" text="Editar" />
+      <Button layoutX="612.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnEstatisticasOnClick" styleClass="btn" text="Estatisticas" />
       <VBox layoutX="8.0" prefHeight="423.0" prefWidth="422.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="413.0" styleClass="transparent" stylesheets="@../values/Styles.css">
@@ -75,7 +75,7 @@
          </children>
       </VBox>
       <VBox layoutX="488.0" layoutY="267.0" prefHeight="51.0" prefWidth="222.0" />
-      <Button fx:id="btnExcluir" layoutX="513.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" styleClass="btn" text="Excluir" />
+      <Button fx:id="btnExcluir" layoutX="496.0" layoutY="373.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" styleClass="btn" text="Excluir" />
       <VBox layoutX="464.0" layoutY="202.0" prefHeight="143.0" prefWidth="222.0">
          <children>
             <HBox prefHeight="22.0" prefWidth="200.0">
